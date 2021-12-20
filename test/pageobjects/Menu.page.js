@@ -30,24 +30,28 @@ class MenuPage extends Page {
         return $("#logout");
     }
 
+    clickMenu(){
+        this.btnMenu.click();
+    }
+
     clickPublications(){
-        this.publicationsOption;
+        this.publicationsOption.click();
     }
 
     clickPeople(){
-        this.peopleOption;
+        this.peopleOption.click();
     }
 
     clickCompanies(){
-        this.companiesOption;
+        this.companiesOption.click();
     }
 
     clickProblems(){
-        this.problemsOption;
+        this.problemsOption.click();
     }
 
     clickProfile(){
-        this.profileOption;
+        this.profileOption.click();
     }
 
     clickLogOut(){
@@ -55,7 +59,7 @@ class MenuPage extends Page {
     }
 
     open () {
-        return super.open('Menu');
+        return super.open('/menu');
     }
 }
 module.exports = new MenuPage();
