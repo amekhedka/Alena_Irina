@@ -7,15 +7,15 @@ class ResetPasswordPage extends Page {
     }
 
     get btnSend() {
-        return $("button[type='submit']")
+        return $("button[type='submit']");
     }
 
     get backToLoginLink() {
-        return $("a[href='/login']")
+        return $("a[href='/login']");
     }
 
     fillEmailField (email) {
-        this.inputEmail.setValue(email)
+        this.inputEmail.setValue(email);
     }
 
     clickSend () {

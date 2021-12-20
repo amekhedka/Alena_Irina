@@ -76,7 +76,7 @@ class ProfilePage extends Page {
     }
 
     open() {
-        return super.open('Profile');
+        return super.open('/profile');
     }
 }
 module.exports = new ProfilePage();
