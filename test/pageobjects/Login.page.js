@@ -10,14 +10,29 @@ class LoginPage extends Page {
         return $('#password');
     }
 
-    get btnSubmit() {
-        return $('//button[type="submit"]');
+    get btnLogIn() {
+        return $("//button[type='submit']");
     }
 
-    async login (email, password) {
+    get restorePWLink() {
+        return $("a[href='/passwordReset']")
+    }
+
+    get signUpLink() {
+        return $("a[href='/signup']")
+    }
+
+    async fillLoginData (email, password) {
         await this.inputEmail.setValue(email);
         await this.inputPassword.setValue(password);
-        await this.btnSubmit.click();
+    }
+
+    clickLoginBtn () {
+        this.btnLogIn.click();
+    }
+
+    clickSignUpLink () {
+        this.signUpLink.click();
     }
 
     open() {

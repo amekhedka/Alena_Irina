@@ -15,16 +15,19 @@ class SignUpPage extends Page {
     }
 
     get loginLink() {
-        return $("a[href='/login']")
+        return $("a[href='/fillLoginData']")
     }
 
     async signUp (email, password) {
         await this.inputEmail.setValue(email);
         await this.inputPassword.setValue(password);
-        await this.btnSignUp.click();
     }
 
-    clickLogin () {
+    clickSignUpBtn () {
+        this.btnSignUp.click();
+    }
+
+    clickLoginLink () {
         this.loginLink.click();
     }
 
@@ -33,3 +36,4 @@ class SignUpPage extends Page {
     }
 }
 module.exports = new SignUpPage();
+

@@ -1,5 +1,4 @@
 const Page = require('./Page');
-const arrLang = [];
 
 class ProfilePage extends Page {
 
@@ -7,16 +6,20 @@ class ProfilePage extends Page {
         return $('#nav-bar-toggle');
     }
 
+    get btnBack() {
+        return $(".btn.btn-link")
+    }
+
     get edit () {
-        return $('div.MuiButton-startIcon MuiButton-iconSizeMedium css-6xugel');
+        return $("div[class='ant-row justify-content-between mb-3'] button[type='button']");
     }
 
     get profileImageInitials () {
-        return $('div.profile-image initials');
+        return $("//div[@class='profile-image initials']");
     }
 
     get profileData () {
-        return $('div.ant-col p-3');
+        return $(".ant-col.p-3");
     }
 
     get inputFirstName () {
@@ -50,14 +53,18 @@ class ProfilePage extends Page {
         return $('button[type="type"]');
     }
 
-    async fillForm (firstName, lastName, jobTitle, imageLink, about, arrLang) {
+    async fillForm (firstName, lastName, jobTitle, imageLink, about, lang) {
         await this.inputFirstName.setValue(firstName);
         await this.inputLastName.setValue(lastName);
         await this.inputJobTitle.setValue(jobTitle);
         await this.inputImageLink.setValue(imageLink);
         await this.inputAbout.setValue(about);
-        await this.inputLanguages.setValue(arrLang);
+        await this.inputLanguages.setValue(lang);
         await this.btnSave.click();
+    }
+
+    clickbtnBack () {
+        this.btnBack.click();
     }
 
     clickSave () {
