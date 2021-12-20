@@ -3,7 +3,7 @@ const Page = require ('./Page');
 class MenuPage extends Page {
 
     get btnMenu() {
-        return $("//*[name()='path' and contains(@d,'M3 18h18v-')]");
+        return $("#nav-bar-toggle");
     }
 
     get publicationsOption(){
