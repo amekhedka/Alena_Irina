@@ -11,7 +11,7 @@ class LoginPage extends Page {
     }
 
     get btnLogIn() {
-        return $("//button[type='submit']");
+        return $("button[type='submit']");
     }
 
     get restorePWLink() {
@@ -23,12 +23,11 @@ class LoginPage extends Page {
     }
 
     async fillLoginData (email, password) {
-        //await this.open();
+        await this.open();
         await this.inputEmail.setValue(email);
         await this.inputPassword.setValue(password);
     }
-
-    clickLoginBtn () {
+    clickLoginBtn() {
         this.btnLogIn.click();
     }
 
