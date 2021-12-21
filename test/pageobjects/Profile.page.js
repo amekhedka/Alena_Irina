@@ -54,6 +54,7 @@ class ProfilePage extends Page {
     }
 
     async fillForm (firstName, lastName, jobTitle, imageLink, about, lang) {
+        await this.open()
         await this.inputFirstName.setValue(firstName);
         await this.inputLastName.setValue(lastName);
         await this.inputJobTitle.setValue(jobTitle);
