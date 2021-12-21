@@ -26,8 +26,6 @@ describe('My Login application - Negative', () => {
     it ('shouldn`t login with empty fields',  async () => {
             await LoginPage.fillLoginCredentials ('', '');
             await LoginPage.clickLoginBtn();
-            await expect(LoginPage.inputEmail).toString("Please fill out this field");
-
-        });
-
+            await expect(LoginPage.inputEmail).toString(LoginPage.errorMessage);
+    });
 });
