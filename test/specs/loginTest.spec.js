@@ -16,21 +16,18 @@ describe('My Login application - Negative', () => {
     });
 
     it ('shouldn`t login with invalid credentials',  async () => {
+        await MenuPage.clickMenu();
         await MenuPage.clickLogOut();
         await LoginPage.fillLoginCredentials('blabla', '$$$$');
         await LoginPage.clickLoginBtn();
         await expect(LoginPage.errorMessage).toHaveText("User with provided email does not exist");
     });
 
+    it ('shouldn`t login with empty fields',  async () => {
+            await LoginPage.fillLoginCredentials ('', '');
+            await LoginPage.clickLoginBtn();
+            await expect(LoginPage.inputEmail).toString("Please fill out this field");
 
-
-        // it ('should login with empty fields',  async () => {
-        //     await LoginPage.fillLoginCredentials ('', '');
-        //     await LoginPage.clickLoginBtn();
-        //     await expect(LoginPage.btnLogIn).toBeEnabled().true
-        //
-        //     await expect(alert().getText("Please fill out this field"));
-        //
-        // });
+        });
 
 });
