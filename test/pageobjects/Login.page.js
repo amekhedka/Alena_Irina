@@ -1,5 +1,5 @@
 const Page = require('./Page');
-//alert("Please fill out this field");
+const errorMessage = "Please fill out this field";
 
 
 class LoginPage extends Page {
