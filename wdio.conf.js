@@ -146,10 +146,10 @@ exports.config = {
         timeout: 60000
     },
 
-    setViewPortSize:  {
-        width: 2048,
-        height: 1536
-    },
+    // setViewPortSize:  {
+    //     width: 2048,
+    //     height: 1536
+    // },
 
     //
     // =====
@@ -236,11 +236,11 @@ exports.config = {
      * @param {Boolean} result.passed    true if test has passed, otherwise false
      * @param {Object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    afterTest: async function(test, context, { error, result, duration, passed, retries }) {
-        if (!passed) {
-            await browser.takeScreenshot();
-        }
-    },
+    // afterTest: async function(test, context, { error, result, duration, passed, retries }) {
+    //     if (!passed) {
+    //         await browser.takeScreenshot();
+    //     }
+    // },
 
 
     /**
