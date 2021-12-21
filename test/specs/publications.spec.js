@@ -6,7 +6,7 @@ describe('My Post', () => {
 
     before(async () => {
         await browser.maximizeWindow();
-        await LoginPage.fillLoginData('Manya111@test.com', 'Manya111@');
+        await LoginPage.fillLoginCredentials('Manya111@test.com', 'Manya111@');
         await LoginPage.clickLoginBtn();
 
     })
