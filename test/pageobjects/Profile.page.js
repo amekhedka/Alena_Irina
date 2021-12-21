@@ -2,15 +2,15 @@ const Page = require('./Page');
 
 class ProfilePage extends Page {
 
-    get menu () {
-        return $('#nav-bar-toggle');
+    get title () {
+        return $("//h6[text()='user']");
     }
 
     get btnBack() {
         return $(".btn.btn-link")
     }
 
-    get edit () {
+    get editBtn () {
         return $("div[class='ant-row justify-content-between mb-3'] button[type='button']");
     }
 
@@ -63,15 +63,15 @@ class ProfilePage extends Page {
         await this.btnSave.click();
     }
 
-    clickbtnBack () {
+    clickBackBtn () {
         this.btnBack.click();
     }
 
-    clickSave () {
+    clickSaveBtn () {
         this.btnSave.click();
     }
 
-    clickCancel () {
+    clickCancelBtn () {
         this.btnCancel.click();
     }
 
