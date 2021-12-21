@@ -15,7 +15,7 @@ class SignUpPage extends Page {
     }
 
     get loginLink() {
-        return $("a[href='/fillLoginData']")
+        return $("a[href='/fillLoginCredentials']")
     }
 
     async signUp (email, password) {
