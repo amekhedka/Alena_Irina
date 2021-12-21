@@ -2,10 +2,6 @@ const Page = require ("/Page");
 
 class ResetPasswordPage extends Page {
 
-    get inputEmail() {
-        return $('#email');
-    }
-
     get btnSend() {
         return $("button[type='submit']");
     }
@@ -24,6 +20,10 @@ class ResetPasswordPage extends Page {
 
     clickBackToLogin () {
         this.backToLoginLink.click();
+    }
+
+    open() {
+        return super.open('/passwordReset');
     }
 }
 
