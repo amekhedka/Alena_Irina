@@ -5,6 +5,15 @@ const Page = require ("./Page");
             return $("//h6[text()='publications']")
 
         }
+        get element(){
+            return $('$("svg")')
+        }
+        get btnAddPost(){
+            return $('//button[normalize-space()=\'Add Publication\']')
+        }
+        clickbtnAddPost() {
+            this.btnAddPost.click();
+        }
 
     open() {
         return super.open('/publications');
