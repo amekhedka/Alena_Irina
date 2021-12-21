@@ -1,6 +1,12 @@
 const Page = require('./Page');
+//alert("Please fill out this field");
+
 
 class LoginPage extends Page {
+
+    get errorMessage() {
+        return $("//div[@class='MuiAlert-message css-1w0ym84']");
+    }
 
     get inputEmail() {
         return $('#email');
@@ -22,7 +28,7 @@ class LoginPage extends Page {
         return $("a[href='/signup']")
     }
 
-    async fillLoginData (email, password) {
+    async fillLoginCredentials (email, password) {
         await this.open();
         await this.inputEmail.setValue(email);
         await this.inputPassword.setValue(password);

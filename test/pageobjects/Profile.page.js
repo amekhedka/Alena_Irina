@@ -61,7 +61,6 @@ class ProfilePage extends Page {
         await this.inputImageLink.setValue(imageLink);
         await this.inputAbout.setValue(about);
         await this.inputLanguages.setValue(lang);
-        await this.btnSave.click();
     }
 
     clickBackBtn () {
