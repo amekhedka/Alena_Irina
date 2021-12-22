@@ -53,6 +53,13 @@ describe('Login functionality', () => {
             await LoginPage.clickLoginBtn();
             expect(LoginPage.inputEmail).toString(LoginPage.errorMessage);
         });
+
+        it('Login after clearInput for Email', async () => {
+            await LoginPage.fillLoginCredentials('Manya111@test.com', 'Manya111@');
+            await LoginPage.inputEmail.clearValue();
+            await LoginPage.clickLoginBtn();
+            expect(LoginPage.inputEmail).toString(LoginPage.errorMessage);
+        });
     });
 
     describe('Login functionality - Verify placeholders', () => {
