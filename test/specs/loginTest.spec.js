@@ -1,6 +1,7 @@
 const LoginPage = require('../pageobjects/Login.page');
 const PublicationsPage = require("../pageobjects/Publications.page");
 const MenuPage = require('../pageobjects/Menu.page');
+const { clearInput } = require('../../helpers/methods');
 
 describe('Login functionality', () => {
 
