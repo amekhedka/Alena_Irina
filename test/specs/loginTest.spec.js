@@ -8,7 +8,7 @@ describe('Login functionality', () => {
             browser.maximizeWindow();
         });
 
-    describe('Login functionality - Positive tests', () => {
+    describe('Login functionality - Positive test', () => {
 
         it('should login with valid credentials', async () => {
             await LoginPage.fillLoginCredentials('Manya111@test.com', 'Manya111@');
@@ -44,6 +44,24 @@ describe('Login functionality', () => {
             await LoginPage.fillLoginCredentials('Manya111@test.com', '');
             await LoginPage.clickLoginBtn();
             expect(LoginPage.inputPassword).toString(LoginPage.errorMessage);
+        });
+
+        it('Login after refresh browser page', async () => {
+            await LoginPage.fillLoginCredentials('Manya111@test.com', 'Manya111@');
+            await browser.refresh();
+            await LoginPage.clickLoginBtn();
+            expect(LoginPage.inputEmail).toString(LoginPage.errorMessage);
+        });
+    });
+
+    describe('Login functionality - Verify placeholders', () => {
+
+        it("The placeholder email contains the correct text", () => {
+            expect(LoginPage.emailPlaceholder).toHaveText("Email");
+        });
+
+        it("The placeholder password contains the correct text", () => {
+            expect(LoginPage.emailPlaceholder).toHaveText("Password");
         });
     });
 });

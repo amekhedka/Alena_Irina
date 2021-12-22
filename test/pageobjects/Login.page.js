@@ -4,12 +4,16 @@ const errorMessage = "Please fill out this field";
 
 class LoginPage extends Page {
 
-    get errorMessage() {
-        return $("//div[@class='MuiAlert-message css-1w0ym84']");
-    }
-
     get inputEmail() {
         return $('#email');
+    }
+
+    get emailPlaceholder() {
+        return $("#email-label");
+    }
+
+    get PW_Placeholder() {
+        return $("#password-label");
     }
 
     get inputPassword() {
@@ -26,6 +30,10 @@ class LoginPage extends Page {
 
     get signUpLink() {
         return $("a[href='/signup']")
+    }
+
+    get errorMessage() {
+        return $("//div[@class='MuiAlert-message css-1w0ym84']");
     }
 
     async fillLoginCredentials (email, password) {
