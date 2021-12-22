@@ -4,11 +4,11 @@ const MenuPage = require('../pageobjects/Menu.page');
 
 describe('Login functionality', () => {
 
-    describe('Login functionality - Positive tests', () => {
-
         before(() => {
             browser.maximizeWindow();
         });
+
+    describe('Login functionality - Positive tests', () => {
 
         it('should login with valid credentials', async () => {
             await LoginPage.fillLoginCredentials('Manya111@test.com', 'Manya111@');
