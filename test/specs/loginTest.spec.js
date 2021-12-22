@@ -28,4 +28,16 @@ describe('My Login application - Negative', () => {
             await LoginPage.clickLoginBtn();
             await expect(LoginPage.inputEmail).toString(LoginPage.errorMessage);
     });
+
+    it ('shouldn`t login with empty Email',  async () => {
+        await LoginPage.fillLoginCredentials ('', 'Manya111@');
+        await LoginPage.clickLoginBtn();
+        await expect(LoginPage.inputEmail).toString(LoginPage.errorMessage);
+    });
+
+    it ('shouldn`t login with empty PW',  async () => {
+        await LoginPage.fillLoginCredentials ('Manya111@test.com', '');
+        await LoginPage.clickLoginBtn();
+        await expect(LoginPage.inputPassword).toString(LoginPage.errorMessage);
+    });
 });
