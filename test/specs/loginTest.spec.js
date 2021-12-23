@@ -1,6 +1,6 @@
 const LoginPage = require('../pageobjects/Login.page');
 const PublicationsPage = require("../pageobjects/Publications.page");
-const MenuPage = require('../pageobjects/Menu.page');
+const MenuPage = require('../pageobjects/GlobalNavigation.page');
 const { clearInput } = require('../../helpers/methods');
 
 describe('Login functionality', () => {
@@ -56,11 +56,28 @@ describe('Login functionality', () => {
 
         it('Login after clearInput for Email', async () => {
             await LoginPage.fillLoginCredentials('Manya111@test.com', 'Manya111@');
-            await LoginPage.inputEmail.clearValue();
+           await LoginPage.inputEmail.clearValue();
+            await LoginPage.clickLoginBtn();
+            expect(LoginPage.inputEmail).toString(LoginPage.errorMessage);
+        });
+
+        it('#2 Login after clearInput for Email', async () => {
+            await LoginPage.fillLoginCredentials('Manya111@test.com', 'Manya111@');
+            await LoginPage.inputEmail.click();
+            await clearInput(LoginPage.inputEmail);
             await LoginPage.clickLoginBtn();
             expect(LoginPage.inputEmail).toString(LoginPage.errorMessage);
         });
     });
+
+it('#3 Login after clearInput for Email', async () => {
+    await LoginPage.fillLoginCredentials('Manya111@test.com', 'Manya111@');
+    await LoginPage.inputEmail.getText();
+    await LoginPage.inputEmail.Keys.DELETE
+    await LoginPage.clickLoginBtn();
+    expect(LoginPage.inputEmail).toString(LoginPage.errorMessage);
+});
+});
 
     describe('Login functionality - Verify placeholders', () => {
 
