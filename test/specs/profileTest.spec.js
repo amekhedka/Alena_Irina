@@ -14,6 +14,6 @@ describe("Profile", () => {
         await MenuPage.clickMenu();
         await MenuPage.clickProfile();
         await expect(ProfilePage.title).toHaveText("user");
-        await expect(ProfilePage.title).toBeExisting().true;
+        expect(ProfilePage.title).toBeExisting().true;
     });
 });
