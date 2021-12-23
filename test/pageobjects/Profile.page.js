@@ -18,6 +18,10 @@ class ProfilePage extends Page {
         return $("//div[@class='profile-image initials']");
     }
 
+    get profileName() {
+        return $("//div[@class = 'MuiTypography-root MuiTypography-h4 css-1xvinid']");
+    }
+
     get profileData () {
         return $(".ant-col.p-3");
     }
@@ -63,17 +67,7 @@ class ProfilePage extends Page {
         await this.inputLanguages.setValue(lang);
     }
 
-    clickBackBtn () {
-        this.btnBack.click();
-    }
 
-    clickSaveBtn () {
-        this.btnSave.click();
-    }
-
-    clickCancelBtn () {
-        this.btnCancel.click();
-    }
 
     open() {
         return super.open('/profile');
