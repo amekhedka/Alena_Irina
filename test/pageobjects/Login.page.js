@@ -1,5 +1,6 @@
 const Page = require('./Page');
 const errorMessage = "Please fill out this field";
+const pw_errorMessage = "Incorrect password";
 
 
 class LoginPage extends Page {
@@ -32,16 +33,30 @@ class LoginPage extends Page {
         return $("a[href='/signup']")
     }
 
-    get errorMessage() {
-        return $("//div[@class='MuiAlert-message css-1w0ym84']");
+    get PW_alert() {
+        return $("//div[text()='Incorrect password']")
     }
+
+    get email_alert() {
+        return $("//div[text()='User with provided email does not exist']")
+    }
+
+    // get errorMessage() {
+    //     return $("//div[@class='MuiAlert-message css-1w0ym84']");
+    // }
 
     async fillLoginCredentials (email, password) {
         await this.open();
         await this.inputEmail.setValue(email);
         await this.inputPassword.setValue(password);
     }
+    clickLoginBtn() {
+        this.btnLogIn.click();
+    }
 
+    clickSignUpLink () {
+        this.signUpLink.click();
+    }
 
     open() {
         return super.open('/login');

@@ -11,7 +11,7 @@ describe("Profile", () => {
 
     it('Should redirect on Profile Page', async () => {
         await LoginPage.fillLoginCredentials('Manya111@test.com', 'Manya111@');
-        await LoginPage.clickLoginBtn();
+        await LoginPage.btnLogIn.click();
         await GlobalNavigation.btnMenu.click();
         await GlobalNavigation.profileOption.click();
         const res = await ProfilePage.title.getText();
