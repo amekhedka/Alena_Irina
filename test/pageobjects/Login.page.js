@@ -41,13 +41,7 @@ class LoginPage extends Page {
         await this.inputEmail.setValue(email);
         await this.inputPassword.setValue(password);
     }
-    clickLoginBtn() {
-        this.btnLogIn.click();
-    }
 
-    clickSignUpLink () {
-        this.signUpLink.click();
-    }
 
     open() {
         return super.open('/login');
