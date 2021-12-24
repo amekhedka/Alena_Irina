@@ -27,7 +27,7 @@ const Page = require ("./Page");
         }
 
         get inputContent(){
-            return $('.w-md-editor-text-input')
+            return $('//textarea[@autocomplete=\'off\']')
         }
 
         get btnSavePost(){
@@ -69,7 +69,6 @@ const Page = require ("./Page");
             await this.inputLinkImage.setValue(imageLink);
             await this.inputDescription.setValue(description);
             await this.inputContent.setValue(content);
-            await this.btnSavePost.click()
         }
 
     open() {
