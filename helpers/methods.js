@@ -1,11 +1,11 @@
-function clearInput(selector) {
-    while (selector.getValue() !== '') {    // while because we don1t know the length of the input
-        selector.doubleClick();             // double click highlight the whole text
-        selector.keys('Delete');
+async function clearInput(element){
+    while(await element.getValue() !== ''){         // while because we don1t know the length of the input
+        await element.doubleClick();                // double click highlight the whole text
+        element.keys("Delete");
     }
 }
 
-function getInitials(name){
+async  function getInitials(name){
     let initials = "";
     for (let i = 0; i < name.length; i++){
         if (name[i] === " ")

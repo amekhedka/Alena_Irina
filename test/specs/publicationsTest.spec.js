@@ -15,5 +15,11 @@ describe('My Post', () => {
         await PublicationsPage.clickbtnAddPost();
         await PublicationsPage.fillPost('Automation_Test',"https://media.istockphoto.com/photos/portland-maine-usa-downtown-skyline-picture-id1139100726", "hi", 'test');
         await PublicationsPage.clickbtnSavePost()
+        //Todo:verify that post added
      });
+
+    it("The placeholder Title contains the correct text", async () => {
+        await PublicationsPage.btnAddPost.click();
+        expect(PublicationsPage.titlePlaceholder).toHaveTitle("Title");
+    });
 });
