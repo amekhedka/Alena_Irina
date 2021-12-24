@@ -25,6 +25,11 @@ class LoginPage extends Page {
         return $("button[type='submit']");
     }
 
+    get loginTitle() {
+        return $("//h3[text()='Login']");
+    }
+
+
     get restorePWLink() {
         return $("a[href='/passwordReset']")
     }
@@ -41,22 +46,35 @@ class LoginPage extends Page {
         return $("//div[text()='User with provided email does not exist']")
     }
 
-    // get errorMessage() {
-    //     return $("//div[@class='MuiAlert-message css-1w0ym84']");
-    // }
+    get errorMessage() {
+        return $("//div[@class='MuiAlert-message css-1w0ym84']");
+    }
+
+    get hrefReset() {
+        return $("//a[@href='/passwordReset']");
+    }
+
+    get hrefSignup() {
+        return $("//a[@href='/signup']");
+    }
+
+    get restorePW_Placeholder() {
+        return $("//div[contains(text(), 'Forgot password?')]");
+    }
+    get signUpPlaceholder() {
+        return $('//div[contains(text(), "Don\'t have an account?")]');
+    }
+
+    get hrefSignup() {
+        return $("//div[@class='ant-row ant-row-center mt-3']");
+    }
 
     async fillLoginCredentials (email, password) {
         await this.open();
         await this.inputEmail.setValue(email);
         await this.inputPassword.setValue(password);
     }
-    clickLoginBtn() {
-        this.btnLogIn.click();
-    }
 
-    clickSignUpLink () {
-        this.signUpLink.click();
-    }
 
     open() {
         return super.open('/login');
