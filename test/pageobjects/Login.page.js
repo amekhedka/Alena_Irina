@@ -1,9 +1,10 @@
 const Page = require('./Page');
-const errorMessage = "Please fill out this field";
-const pw_errorMessage = "Incorrect password";
-
 
 class LoginPage extends Page {
+
+    get loginTitle() {
+        return $("//h3[text()='Login']")
+    }
 
     get inputEmail() {
         return $('#email');
@@ -29,20 +30,11 @@ class LoginPage extends Page {
         return $("//h3[text()='Login']");
     }
 
-
-    get restorePWLink() {
-        return $("a[href='/passwordReset']")
-    }
-
-    get signUpLink() {
-        return $("a[href='/signup']")
-    }
-
-    get PW_alert() {
+    get PW_message() {
         return $("//div[text()='Incorrect password']")
     }
 
-    get email_alert() {
+    get email_message() {
         return $("//div[text()='User with provided email does not exist']")
     }
 
@@ -65,16 +57,11 @@ class LoginPage extends Page {
         return $('//div[contains(text(), "Don\'t have an account?")]');
     }
 
-    get hrefSignup() {
-        return $("//div[@class='ant-row ant-row-center mt-3']");
-    }
-
     async fillLoginCredentials (email, password) {
         await this.open();
         await this.inputEmail.setValue(email);
         await this.inputPassword.setValue(password);
     }
-
 
     open() {
         return super.open('/login');
