@@ -30,18 +30,19 @@ describe('Login functionality', () => {
             await expect(LoginPage.PW_Placeholder).toHaveText("Password *");
     });
 
+        //corrected
         it("The placeholder for restore/signup contains the correct text", async () => {
             await LoginPage.open();
-            //await expect(LoginPage.restorePW_Placeholder).toHaveText("Forgot password?");
-            await expect(LoginPage.signUpPlaceholder).toHaveText("Don`t have an account?");
+            await expect(LoginPage.restorePW_Placeholder).toHaveTextContaining("Forgot password?");
+            await expect(LoginPage.signUpPlaceholder).toHaveTextContaining("Don't have an account?");
     });
 
-    //Todo:
-    //     it("Check clickable link on the login page", async () => {
-    //         await LoginPage.open();
-    //         await expect(LoginPage.hrefReset).toBeClickable();
-    //         await expect(LoginPage.hrefSignup).toBeClickable();
-    //     });
+        // to ask question
+        it("Check clickable link on the login page", async () => {
+            await LoginPage.open();
+            await expect(LoginPage.hrefReset).toBeClickable();
+            await expect(LoginPage.hrefSignup).toBeClickable();
+        });
 
   });
 
