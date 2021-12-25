@@ -12,4 +12,8 @@ async  function getInitials(name){
             return (initials = name.charAt(name[0])+name.charAt(i + 1)).toUpperCase();
     }
 }
-module.exports = { clearInput, getInitials };            // curly braces because we can add some other methods in the arr
+
+async function isObjectEmpty(obj) {
+    return Object.keys(obj).length === 0;
+}
+module.exports = { clearInput, getInitials, isObjectEmpty };            // curly braces because we can add some other methods in the arr
