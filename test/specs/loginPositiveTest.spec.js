@@ -13,7 +13,7 @@ describe('Login functionality', () => {
     it('should login with valid credentials', async () => {
         await LoginPage.fillLoginCredentials('Manya111@test.com', 'Manya111@');
         await LoginPage.btnLogIn.click();
-        await expect(LoginPage.btnLogIn).toBeEnabled().true
+        //await expect(LoginPage.btnLogIn).toBeEnabled().false;      // проходит false  - не рабочая проверказадать вопрос
         await expect(PublicationsPage.publicationsTitle).toHaveText('publications');
     });
 
@@ -50,6 +50,13 @@ describe('Login functionality', () => {
         await LoginPage.inputEmail.setValue('Manya111@test.com');
         await LoginPage.btnLogIn.click();
         await expect(PublicationsPage.publicationsTitle).toHaveText('publications');
+    });
+
+    it('should logout and return back to login page', async () => {
+        await GlobalNavigationPage.btnMenu.click();
+        await GlobalNavigationPage.logOutOption.click();
+        await expect(LoginPage.loginTitle).toHaveText('Login');
+        //await expect(LoginPage.inputEmail).not.toHaveText().true;
     });
 });
 

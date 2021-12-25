@@ -2,6 +2,10 @@ const Page = require('./Page');
 
 class LoginPage extends Page {
 
+    get loginTitle() {
+        return $("//h3[text()='Login']")
+    }
+
     get inputEmail() {
         return $('#email');
     }

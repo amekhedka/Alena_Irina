@@ -1,11 +1,9 @@
 const LoginPage = require('../pageobjects/Login.page');
 const PublicationsPage = require("../pageobjects/Publications.page");
 const GlobalNavigationPage = require('../pageobjects/GlobalNavigation.page');
-const { clearInput, isObjectEmpty } = require('../../helpers/methods');
+const { clearInput } = require('../../helpers/methods');
 const errorMessage = "Please fill out this field";
 const pw_errorMessage = "Incorrect password";
-
-
 
 describe('Login functionality', () => {
 
@@ -13,20 +11,22 @@ describe('Login functionality', () => {
         browser.maximizeWindow();
     });
 
-    it('Should not login with invalid email', async () => {
-        await LoginPage.open();
-        await LoginPage.inputEmail.setValue('12345678909876543');
-        await LoginPage.inputPassword.setValue('Manya111@');
-        await LoginPage.btnLogIn.click();
-        const res = await LoginPage.errorMessage.getText();
-        await expect(res).toEqual("User with provided email does not exist");
-    });
+    // it('Should not login with invalid email', async () => {
+    //     await LoginPage.open();
+    //     await LoginPage.inputEmail.setValue('12345678909876543');
+    //     await LoginPage.inputPassword.setValue('Manya111@');
+    //     await LoginPage.btnLogIn.click();
+    //     const res = await LoginPage.errorMessage.getText();
+    //     await expect(res).toEqual("User with provided email does not exist");
+    // });
 
     //Todo: finished
     it('shouldn`t login with empty fields', async () => {
-            await LoginPage.fillLoginCredentials('', '');
-            await LoginPage.btnLogIn.click();;
-            await expect (isObjectEmpty)
+            await LoginPage.fillLoginCredentials('bbbbbbbbbb', 'vvvvvvvvvv');
+            await isObjectEmpty(LoginPage.inputEmail);
+            await isObjectEmpty(LoginPage.inputPassword);
+            await LoginPage.btnLogIn.click();
+            //
         });
 
     //Todo: finished
