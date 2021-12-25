@@ -14,8 +14,8 @@ const Page = require ("./Page");
             return $('//button[normalize-space()=\'Add Publication\']')
         }
 
-        get inputPostTittle(){
-            return $('#title')
+        get inputPostTitle(){
+            return $("//input[@id='title']")
         }
 
         get inputLinkImage(){
@@ -62,10 +62,9 @@ const Page = require ("./Page");
             return $('//label[text()=\'Content\']')
         }
 
-
         async fillPost (title,imageLink, description, content) {
-            await this.open();
-            await this.inputPostTittle.setValue(title);
+            //await this.open();
+            await this.inputPostTitle.setValue(title);
             await this.inputLinkImage.setValue(imageLink);
             await this.inputDescription.setValue(description);
             await this.inputContent.setValue(content);
