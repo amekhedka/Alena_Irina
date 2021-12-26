@@ -3,6 +3,7 @@ const ProfilePage = require('../pageobjects/Profile.page');
 const GlobalNavigation = require("../pageobjects/GlobalNavigation.page");
 const { getInitials, clearInput} = require("../../helpers/methods");
 const ProfileEditPage = require("../pageobjects/ProfileEdit.page");
+const LoginData = require('../data/login.data');
 
 describe("Profile", () => {
 
@@ -11,7 +12,8 @@ describe("Profile", () => {
     })
 
     it('Should redirect on Profile Page', async () => {
-        await LoginPage.fillLoginCredentials('Manya111@test.com', 'Manya111@');
+        await LoginPage.fillLoginCredentials(LoginData.userCredentials.email, LoginData.userCredentials.password);
+        //await LoginPage.fillLoginCredentials('Manya111@test.com', 'Manya111@');
         await LoginPage.btnLogIn.click();
         await GlobalNavigation.btnMenu.click();
         await GlobalNavigation.profileOption.click();
@@ -19,20 +21,20 @@ describe("Profile", () => {
         await expect(titleText).toEqual("user");
     });
 
-    it("ImageLetter should match FullName", async () => {
-        const fullName = ProfilePage.profileName.getText();
-        const nameInit = getInitials(fullName);
-        const imageInit = ProfilePage.profileImageInitials.getText();
-        await expect(nameInit).toEqual(imageInit);
-    })
+    // it("ImageLetter should match FullName", async () => {
+    //     const fullName = ProfilePage.profileName.getText();
+    //     const nameInit = getInitials(fullName);
+    //     const imageInit = ProfilePage.profileImageInitials.getText();
+    //     await expect(nameInit).toEqual(imageInit);
+    // })
 
-    it("Should be able to clean the form", async () => {await LoginPage.fillLoginCredentials('Manya111@test.com', 'Manya111@');
-        await ProfilePage.editBtn.click();
-        await clearInput(ProfileEditPage.inputFirstName);
-        await clearInput(ProfileEditPage.inputLastName);
-        await clearInput(ProfileEditPage.inputJobTitle);
-        
-    });
-
-    it("Should be able to fill the form and save")
+    // it("Should be able to clean the form", async () => {await LoginPage.fillLoginCredentials('Manya111@test.com', 'Manya111@');
+    //     await ProfilePage.editBtn.click();
+    //     await clearInput(ProfileEditPage.inputFirstName);
+    //     await clearInput(ProfileEditPage.inputLastName);
+    //     await clearInput(ProfileEditPage.inputJobTitle);
+    //
+    // });
+    //
+    // it("Should be able to fill the form and save")
 });
