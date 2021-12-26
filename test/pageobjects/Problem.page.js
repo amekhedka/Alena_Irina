@@ -15,34 +15,6 @@ class ProblemPage extends Page {
         return $("//button[contains(text(), 'Filters')]")
     }
 
-    get filterColumns(){
-        return $("//select[@id='mui-764826778']")
-    }
-
-    get filterCompanyOption(){
-        return $("//option[@value='Company']")
-    }
-
-    get filterOperation(){
-        return $("//select[@id='mui-789853903']")
-    }
-
-    get filterContainsOption(){
-        return $("//option[@value='contains']")
-    }
-
-    get inputValueFilter(){
-        return $("//input[@id='mui-121440907']")
-    }
-
-    get previousPage(){
-        return $("//button[@title='Go to previous page']")
-    }
-
-    get nextPage(){
-        return $("//button[@title='Go to next page']")
-    }
-
     get btnDensity(){
         return $("//button[contains(text(), 'Density')]")
     }
@@ -52,6 +24,39 @@ class ProblemPage extends Page {
     }
 
 
+    get previousPage(){
+        return $("//button[@title='Go to previous page']")
+    }
+
+    get nextPage(){
+        return $("//button[@title='Go to next page']")
+    }
+
+     problemRowsContainTextColumn (text, column ) {
+        return $$(`//*[contains(text(),"${text}") and @data-field='${column}']`);    //TODO://*[contains(text(),"Google") and @data-field='Company']
+    }
+
+    get filterColumnDropDownMenu(){
+        return $("//label[text()=\'Columns\']/..//select");
+    }
+
+    get filterOperatorDropDownMenu(){
+        return $("//label[(text()='Operators') and @id='mui-915659871']/..//select");
+    }
+
+    get filterValueDropDown(){
+        return $("//label[text()='Value']/..//input");
+    }
+
+    get btnLoad(){
+        return $("//*[@data-testid='LoadIcon']");
+    }
+
+
+
+    open() {
+        return super.open('/problems');
+    }
 
 }
 
