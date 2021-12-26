@@ -30,6 +30,7 @@
         "wdio-chromedriver-service": "^7.2.2"
     },
     "dependencies": {
-        "axios": "^0.24.0"
+        "axios": "^0.24.0",
+        "fake": "^0.2.2"
     }
 }
