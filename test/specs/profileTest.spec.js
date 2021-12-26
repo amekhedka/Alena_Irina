@@ -1,7 +1,7 @@
 const LoginPage = require('../pageobjects/Login.page');
 const ProfilePage = require('../pageobjects/Profile.page');
 const GlobalNavigation = require("../pageobjects/GlobalNavigation.page");
-const { getInitials } = require("../../helpers/methods")
+const { getInitials } = require("../../helpers/methods");
 
 describe("Profile", () => {
 
@@ -14,14 +14,14 @@ describe("Profile", () => {
         await LoginPage.btnLogIn.click();
         await GlobalNavigation.btnMenu.click();
         await GlobalNavigation.profileOption.click();
-        const res = await ProfilePage.title.getText();
-        expect(res).toEqual("user");
+        const titleText = await ProfilePage.title.getText();
+        await expect(titleText).toEqual("user");
     });
 
     it("ImageLetter should match FullName", async () => {
-        const fullName = await ProfilePage.profileName.getText();
-        const nameInit  = await getInitials(fullName);
-        const imageInit = await ProfilePage.profileImageInitials.getText();
+        const fullName = ProfilePage.profileName.getText();
+        const nameInit = getInitials(fullName);
+        const imageInit = ProfilePage.profileImageInitials.getText();
         await expect(nameInit).toEqual(imageInit);
     })
 });
