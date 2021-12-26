@@ -13,4 +13,4 @@ async  function getInitials(name){
     }
 }
 
-module.exports = { clearInput, getInitials };            // curly braces because we can add some other methods in the arr
+module.exports = { clearInput, getInitials };         // curly braces because we can add some other methods in the arr
