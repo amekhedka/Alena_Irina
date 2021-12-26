@@ -1,7 +1,7 @@
 var axios = require('axios');
 const API_URL = "https://enduring-server.herokuapp.com/v3/graphql"
 
- //TODO: REGISTER
+//  //TODO: REGISTER
 async function createUser(email, password) {
     const reqData = JSON.stringify({
         query: `mutation userCreate ($email: String!, $password: String!) {
@@ -19,8 +19,8 @@ async function createUser(email, password) {
             'Content-Type': 'application/json'
         }
     });
-    //console.log(data)
-
+//     //console.log(data)
+//
     if (data.errors) {
         return {errors: data.errors}
     } else {
@@ -28,11 +28,11 @@ async function createUser(email, password) {
         return { actovationLinkId };
     }
 }
-
-//createUser();
-
-
-//TODO:User_Activate
+//
+// //createUser();
+//
+//
+// //TODO:User_Activate
 async function registerActivationLink(activationLinkId) {
     const dataUserActivate = JSON.stringify({
         query: `mutation userActivate ($activationLinkId: String!) {
@@ -49,7 +49,7 @@ async function registerActivationLink(activationLinkId) {
             'Content-Type': 'application/json'
         }
     });
-   // console.log(data)
+//    // console.log(data)
     if (data.errors) {
         return {errors: data.errors}
     } else {
@@ -57,10 +57,47 @@ async function registerActivationLink(activationLinkId) {
         return {activationString};
     }
 }
+//
+// //registerActivationLink();
 
-//registerActivationLink();
+
+//Todo: User login
+async function userLogin(email, password){
+    const  reqLoginData = JSON.stringify({
+        query: `query login ($email: String!, $password: String!) {
+    login (email: $email, password: $password) {
+        accessToken
+        user {
+            _id
+        }
+    }
+}`,
+        //variables: {"email":"Ma4546n45565678ya111@test.com","password":"Manya111@"}
+       variables: {"email":email,"password":password}
+    });
+
+    const {data} = await axios({
+        method: 'post',
+        url: API_URL,
+        data: reqLoginData,
+        headers: {
+            //'Authorization' : `Bearer $(token)`,
+            'Content-Type': 'application/json'
+        }
+    });
+   //console.log(data.data.login.accessToken)
+    if (data.errors) {
+        return {errors: data.errors}
+    } else {
+        const accessToken = data.data.login.accessToken;
+        return { accessToken };
+    }
+}
+
+//userLogin()
 
 module.exports = {
     createUser,
-    registerActivationLink
+    registerActivationLink,
+    userLogin
 }
