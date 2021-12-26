@@ -1,4 +1,5 @@
 const Page = require ("./Page");
+const chai = require('chai');
 
 class PublicationsCreationPage extends Page {
 
