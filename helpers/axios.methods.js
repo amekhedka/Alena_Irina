@@ -62,83 +62,83 @@
 
 
 //Todo: User login
-async function userLogin(email, password){
-    const  reqLoginData = JSON.stringify({
-        query: `query login ($email: String!, $password: String!) {
-    login (email: $email, password: $password) {
-        accessToken
-        user {
-            _id
-        }
-    }
-}`,
-        //variables: {"email":"Ma4546n45565678ya111@test.com","password":"Manya111@"}
-       variables: {"email":email,"password":password}
-    });
-
-    const {data} = await axios({
-        method: 'post',
-        url: API_URL,
-        data: reqLoginData,
-        headers: {
-            //'Authorization' : `Bearer $(token)`,
-            'Content-Type': 'application/json'
-        }
-    });
-   //console.log(data.data.login.accessToken)
-    if (data.errors) {
-        return {errors: data.errors}
-    } else {
-        const accessToken = data.data.login.accessToken;
-        return { accessToken };
-    }
-}
+// async function userLogin(email, password){
+//     const  reqLoginData = JSON.stringify({
+//         query: `query login ($email: String!, $password: String!) {
+//     login (email: $email, password: $password) {
+//         accessToken
+//         user {
+//             _id
+//         }
+//     }
+// }`,
+//         //variables: {"email":"Ma4546n45565678ya111@test.com","password":"Manya111@"}
+//        variables: {"email":email,"password":password}
+//     });
+//
+//     const {data} = await axios({
+//         method: 'post',
+//         url: API_URL,
+//         data: reqLoginData,
+//         headers: {
+//             //'Authorization' : `Bearer $(token)`,
+//             'Content-Type': 'application/json'
+//         }
+//     });
+//    //console.log(data.data.login.accessToken)
+//     if (data.errors) {
+//         return {errors: data.errors}
+//     } else {
+//         const accessToken = data.data.login.accessToken;
+//         return { accessToken };
+//     }
+// }
 
 //userLogin()
 
-//Todo: Create company
-async function createCompany(       //передаем параметр в виде объекта, то что у нас в variables in Postman + accesToken
-    {
-        title = 'Maine',
-        description = 'Hello everyone!',
-        image = 'https://en.wikipedia.org/wiki/Decibel',
-        link = 'https://en.wikipedia.org/wiki/Decibel',
-        accessToken
-    }
-    ) {
-    const getCompanyID = JSON.stringify({
-        query: `mutation companyCreate ($data: CompanyInput) {
-        companyCreate (data: $data)
-}`,
-    variables: {
-        data:
-            {
-                title,
-                description,
-                image,
-                link
-            }
-    }
-});
-    const { data } = await axios({
-        method: 'post',
-        url: API_URL,
-        data: getCompanyID,
-        headers: {
-            'Authorization' : `Bearer ${ accessToken }`,
-            'Content-Type': 'application/json'
-        }
-    });
-console.log(data.data.companyCreate)
-
-}
-createCompany();
+// //Todo: Create company
+// async function createCompany(       //передаем параметр в виде объекта, то что у нас в variables in Postman + accesToken
+//     {
+//         title = 'Maine',
+//         description = 'Hello everyone!',
+//         image = 'https://en.wikipedia.org/wiki/Decibel',
+//         link = 'https://en.wikipedia.org/wiki/Decibel',
+//         accessToken
+//     }
+//     ) {
+//     const getCompanyID = JSON.stringify({
+//         query: `mutation companyCreate ($data: CompanyInput) {
+//         companyCreate (data: $data)
+// }`,
+//     variables: {
+//         data:
+//             {
+//                 title,
+//                 description,
+//                 image,
+//                 link
+//             }
+//     }
+// });
+//     const { data } = await axios({
+//         method: 'post',
+//         url: API_URL,
+//         data: getCompanyID,
+//         headers: {
+//             'Authorization' : `Bearer ${ accessToken }`,
+//             'Content-Type': 'application/json'
+//         }
+//     });
+// console.log(data.data.companyCreate)
+//
+// }
+// createCompany();
 
 
 module.exports = {
     // createUser,
     // registerActivationLink,
-    userLogin,
-    createCompany
+    //userLogin,
+    //createCompany
 }
 
