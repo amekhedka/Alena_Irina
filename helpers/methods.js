@@ -15,22 +15,20 @@ async  function getInitials(name){
     }
 }
 
-IK_positive_negative
+
+async function areEmptyFields (email, password) {
+
+    let arr = [email,password];
+    let arr2 = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] !== "") {
+           arr2.push(arr[i]);
+        }
+    }
+    return arr2.length === 0 ? "All inputs are empty" : arr2;
+}
 
 
-// async function areEmptyFields (firstName, lastName, jobTitle, imageLink, about) {
-//
-//     let arr = [firstName, lastName, jobTitle, imageLink, about];
-//     let arr2 = [];
-//     for (let i = 0; i < arr.length; i++) {
-//         if (arr[i] !== "") {
-//            arr2.push(arr[i]);
-//         }
-//     }
-//     return arr2.length === 0 ? "All inputs are empty" : arr2;
-// }
-
-module.exports = { clearInput, getInitials };         // curly braces because we can add some other methods in the arr
 async function createANDLoginAPI(email, password){
     const userCreateRes = createUser(email, password);
     if(userCreateRes.errors) console.log(userCreateRes.errors);
@@ -43,5 +41,5 @@ async function createANDLoginAPI(email, password){
 
     return  userLoginRes.accessToken;
 }
-module.exports = { clearInput, getInitials, createANDLoginAPI };         // curly braces because we can add some other methods in the arr
- main
+module.exports = { clearInput, getInitials, createANDLoginAPI, areEmptyFields };         // curly braces because we can add some other methods in the arr
+
