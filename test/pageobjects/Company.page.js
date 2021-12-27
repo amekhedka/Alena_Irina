@@ -10,6 +10,10 @@ class CompanyPage extends Page {
         return $("//div[@class='btn btn-link']");
     }
 
+    open() {
+        return super.open('/problems');
+    }
+
 }
 
 
@@ -28,5 +32,3 @@ module.exports = new CompanyPage();
 
 
 
-
-}

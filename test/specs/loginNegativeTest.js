@@ -24,7 +24,8 @@ describe('Login functionality', () => {
         await clearInput(await LoginPage.inputEmail)
         await LoginPage.inputEmail.setValue('Manya111@test.com');
         await LoginPage.btnLogIn.click();
-        await expect(PublicationsPage.publicationsTitle).toEqual('publications');
+        const getTitle = await PublicationsPage.publicationsTitle.getText()
+        await expect(getTitle).toEqual('publications');
     });
 
     // //Todo: finished
@@ -37,10 +38,10 @@ describe('Login functionality', () => {
     //     });
 
     //Todo: finished
-    it('shouldn`t login with empty Email', async () => {
-            await LoginPage.fillLoginCredentials('', 'Manya111@');
-            await LoginPage.btnLogIn.click();;
-        });
+    // it('shouldn`t login with empty Email', async () => {
+    //         await LoginPage.fillLoginCredentials('', 'Manya111@');
+    //         await LoginPage.btnLogIn.click();;
+    //     });
     //
     // Todo: finished
     // it('shouldn`t login with empty PW', async () => {
