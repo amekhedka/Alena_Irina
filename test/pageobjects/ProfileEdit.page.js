@@ -25,6 +25,15 @@ class ProfileEditPage extends Page {
     get inputLanguages () {
         return $('#languages');
     }
+
+    get langDropdownBtn () {
+        return $("//button[@title='Open']");
+    }
+
+    get langDropdownBox () {
+        return $("#languages");
+    }
+
     get btnSave () {
         return $('button[type="submit"]');
     }
@@ -34,12 +43,12 @@ class ProfileEditPage extends Page {
     }
 
     async fillForm (firstName, lastName, jobTitle, imageLink, about) {
-        await this.open()
         await this.inputFirstName.setValue(firstName);
         await this.inputLastName.setValue(lastName);
         await this.inputJobTitle.setValue(jobTitle);
         await this.inputImageLink.setValue(imageLink);
         await this.inputAbout.setValue(about);
+
     }
 
     open() {
