@@ -2,7 +2,7 @@ const ProblemPage = require('../pageobjects/Problem.page')
 const LoginPage = require('../pageobjects/Login.page')
 const GlobalNavigation = require('../pageobjects/GlobalNavigation.page')
 const { createANDLoginAPI } = require("../../helpers/methods")
-const { createCompany } =  require('../../helpers/axios.methods')
+const { createCompany } =  require('../../API/axios.methods')
 
 describe('Problem functionality', () => {
 let token = null;

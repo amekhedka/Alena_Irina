@@ -6,7 +6,7 @@ const errorMessage = "Please fill out this field";
 const pw_errorMessage = "Incorrect password";
 const chai = require("chai");
 const assert = chai.assert;
-const {createCompany} = require("../../helpers/axios.methods");
+const {createCompany} = require("../../API/axios.methods");
 
 
 describe('Login functionality', () => {

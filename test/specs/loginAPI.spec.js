@@ -1,10 +1,10 @@
 const LoginPage = require('../pageobjects/Login.page');
-const { registerActivationLink, createUser, userLogin } = require('../../helpers/axios.methods');
+const { registerActivationLink, createUser, userLogin } = require('../../API/axios.methods');
 
 const faker = require('fake')
 const chai = require('chai')
 describe('API for Login page', () => {
-    let result = null;   //создали переиенную пока с значением NULL
+    let result = null;
 
     it('API registration', async () => {
         result = await createUser('Ma11111@test.com', 'Manya111@')
