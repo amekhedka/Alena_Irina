@@ -6,7 +6,7 @@ const errorMessage = "Please fill out this field";
 const pw_errorMessage = "Incorrect password";
 const chai = require("chai");
 const assert = chai.assert;
-const {createCompany} = require("../../helpers/axios.methods");
+//const {createCompany} = require("../../helpers/axios.methods");
 
 
 describe('Login functionality', () => {
@@ -55,10 +55,12 @@ describe('Login functionality', () => {
           //need assertion
     });
 
-    it('Login after refresh browser page', async () => {
+    it.only('Login after refresh browser page', async () => {
         await LoginPage.fillLoginCredentials('Manya111@test.com', 'Manya111@');
         await browser.refresh();
-        //await (areEmptyFields(LoginPage.inputEmail, LoginPage.inputPassword)).to.be.empty
-        //need assertion
+        console.log( await LoginPage.inputEmail.getText())
+        // //expect( await LoginPage.inputEmail.getText()).toEqual("4567890")
+        // const emailText =   await LoginPage.inputEmail.getText()
+        // expect(emailText.length).toEqual(0)
     });
 });

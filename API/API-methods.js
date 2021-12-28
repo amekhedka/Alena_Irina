@@ -1,4 +1,4 @@
-const {createUser, registerActivationLink, userLogin} = require("./axios.methods");
+const {createUser, registerActivationLink, userLogin, createCompany} = require("./axios.methods");
 
 async function createANDLoginAPI(email, password) {
     const userCreateRes = createUser(email, password);
@@ -10,5 +10,10 @@ async function createANDLoginAPI(email, password) {
     const userLoginRes = userLogin(email, password);
     if (userLoginRes.errors) console.log(userLoginRes.errors);
 
-    return userLoginRes.accessToken;
+ //   return userLoginRes.accessToken;
+
+    const res = createCompany({title: "fghjk", accessToken: (await userLoginRes).accessToken});
+    //if (companyID.errors) console.log(companyID.errors);
+
+    return res;
 }

@@ -19,8 +19,7 @@ async function createUser(email, password) {
             'Content-Type': 'application/json'
         }
     });
-//     //console.log(data)
-//
+
     if (data.errors) {
         return {errors: data.errors}
     } else {
@@ -48,7 +47,6 @@ async function registerActivationLink(activationLinkId) {
             'Content-Type': 'application/json'
         }
     });
-//    // console.log(data)
     if (data.errors) {
         return {errors: data.errors}
     } else {
@@ -70,8 +68,8 @@ async function userLogin(email, password){
         }
     }
 }`,
-        //variables: {"email":"Ma4546n45565678ya111@test.com","password":"Manya111@"}
-       variables: {"email":email,"password":password}
+        variables: {"email":"Ma4546n45565678ya111@test.com","password":"Manya111@"}
+       //variables: {"email":email,"password":password}
     });
 
     const {data} = await axios({
@@ -92,11 +90,16 @@ async function userLogin(email, password){
     }
 }
 
-//userLogin()
+const runRequests = async () => {
+   //тут ранается по очереди то что мы пропишем!!!!!!!!
+    const res = await userLogin();
+    console.log(await  createCompany({title: `${Date.now()}`, accessToken: res.accessToken}))
+}
 
+runRequests()
 async function createCompany(       //передаем параметр в виде объекта, то что у нас в variables in Postman + accesToken
     {
-        title = 'Maine',
+        title,
         description = 'Hello everyone!',
         image = 'https://en.wikipedia.org/wiki/Decibel',
         link = 'https://en.wikipedia.org/wiki/Decibel',
@@ -126,15 +129,28 @@ async function createCompany(       //передаем параметр в ви�
             'Content-Type': 'application/json'
         }
     });
-console.log(data.data.companyCreate)
+//console.log(data.errors)
+
+    if (data.errors) {
+        return {errors: data.errors}
+    } else {
+        const companyID = data.data.companyCreate;
+        return companyID;
+    }
+
 }
 
-createCompany();
+//createCompany({title: "fghjk", accessToken: });
+
+async function createProblem (){
+
+}
+
 
 
 module.exports = {
-    createUser,
-    registerActivationLink,
+    //createUser,
+    //registerActivationLink,
     userLogin,
     createCompany
 }
