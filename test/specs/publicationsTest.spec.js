@@ -13,7 +13,7 @@ describe('My Post', () => {
         await LoginPage.btnLogIn.click();
         await PublicationsPage.btnAddPost.click();
         await PublivationsCreationPage.open();
-        await PublivationsCreationPage.fillPost('Automation_Test',"https://media.istockphoto.com/photos/portland-maine-usa-downtown-skyline-picture-id1139100726", "hi", 'test');
+        await PublivationsCreationPage.fillPost('Maine',"https://media.istockphoto.com/photos/portland-maine-usa-downtown-skyline-picture-id1139100726", "hi", 'test');
         await PublivationsCreationPage.btnSavePost.click()
      });
 
