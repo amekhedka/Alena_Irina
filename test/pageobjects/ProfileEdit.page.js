@@ -86,12 +86,16 @@ class ProfileEditPage extends Page {
         await this.inputJobTitle.setValue(jobTitle);
         await this.inputImageLink.setValue(imageLink);
         await this.inputAbout.setValue(about);
+        await this.langDropdownField.click();
 
         do {                                                           // if we don`t know the quantity of languages
-            await this.langDropdownField.click();
             await this.langOption.click();
+            await this.langDropdownField.click();
         }
         while (await this.langOption.isClickable());
+        await this.langDropdownField.click();
+
+
 
         // for (let i = 0; i <= 17; i++) {                             // if we know the quantity of languages
         //     await this.langDropdownField.click();
