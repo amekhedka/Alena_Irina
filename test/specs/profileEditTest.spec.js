@@ -3,6 +3,7 @@ const ProfilePage = require('../pageobjects/Profile.page');
 const GlobalNavigation = require("../pageobjects/GlobalNavigation.page");
 const ProfileEditPage = require("../pageobjects/ProfileEdit.page");
 const LoginData = require('../data/login.data');
+const {getInitials} = require("../../helpers/methods");
 
 describe("Profile", () => {
 
@@ -32,5 +33,9 @@ describe("Profile", () => {
         await ProfileEditPage.btnSave.click();
         const titleText = await ProfilePage.title.getText();
         expect(titleText).toEqual("user");
+    });
+
+    it("Count non Selected Languages", async () => {
+
     });
 });

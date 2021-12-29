@@ -3,59 +3,59 @@ const {clearInput} = require("../../helpers/methods");
 
 class ProfileEditPage extends Page {
 
-    get inputFirstName () {
+    get inputFirstName() {
         return $('#first-name');
     }
 
-    get inputLastName () {
+    get inputLastName() {
         return $('#last-name');
     }
 
-    get inputJobTitle () {
+    get inputJobTitle() {
         return $('#job-title');
     }
 
-    get inputImageLink () {
+    get inputImageLink() {
         return $('#image');
     }
 
-    get inputAbout () {
+    get inputAbout() {
         return $('#about');
     }
 
-    get labelAbout () {
+    get labelAbout() {
         return $('#about-label');
     }
 
-    get inputLanguages () {
+    get inputLanguages() {
         return $('#languages');
     }
 
-    get langDropdownBtn () {
+    get langDropdownBtn() {
         return $("//button[@title='Open']");
     }
 
-    get langDropdownField () {
+    get langDropdownField() {
         return $("#languages");
     }
 
-    get selectLang () {
+    get langOption() {
         return $("//li[@id='languages-option-0']");
     }
 
-    get cleanLang () {
+    get cleanLang() {
         return $("(//button[@title='Clear'])[1]")
     }
 
-    get btnSave () {
+    get btnSave() {
         return $('button[type="submit"]');
     }
 
-    get btnCancel () {
+    get btnCancel() {
         return $('button[type="type"]');
     }
 
-    async cleanForm () {
+    async cleanForm() {
         await clearInput(this.inputFirstName);
         await clearInput(this.inputLastName);
         await clearInput(this.inputJobTitle);
@@ -65,7 +65,7 @@ class ProfileEditPage extends Page {
         await this.cleanLang.click();
     }
 
-    async expectClearForm () {
+    async expectClearForm() {
         const firstNameField = await this.inputFirstName.getValue();
         expect(firstNameField.length).toEqual(0);
         const lastNameField = await this.inputLastName.getValue();
@@ -80,29 +80,28 @@ class ProfileEditPage extends Page {
         expect(langField.length).toEqual(0);
     }
 
-    async fillForm (firstName, lastName, jobTitle, imageLink, about) {
+    async fillForm(firstName, lastName, jobTitle, imageLink, about) {
         await this.inputFirstName.setValue(firstName);
         await this.inputLastName.setValue(lastName);
         await this.inputJobTitle.setValue(jobTitle);
         await this.inputImageLink.setValue(imageLink);
         await this.inputAbout.setValue(about);
 
-        for (let i = 0; i <= 17; i++) {
+        do {                                                           // if we don`t know the quantity of languages
             await this.langDropdownField.click();
-            await this.selectLang.click();
-
+            await this.langOption.click();
         }
-    }
+        while (await this.langOption.isClickable());
 
-    // async function selectLang (element){
-//
-//     while(await element.getValue() == '${text}'){
-//         await element.onArrowKey("down");
-//     }
-// }
+        // for (let i = 0; i <= 17; i++) {                             // if we know the quantity of languages
+        //     await this.langDropdownField.click();
+        //     await this.langOption.click();
+        // }
+    }
 
     open() {
         return super.open('/edit');
     }
 }
+
 module.exports = new ProfileEditPage();
