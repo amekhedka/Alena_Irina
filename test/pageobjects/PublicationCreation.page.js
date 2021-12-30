@@ -56,10 +56,9 @@ class PublicationsCreationPage extends Page {
     }
 
 
-    async fillPost (title,imageLink, description, content) {
+    async fillPost (title, description, content) {
         await this.open();
         await this.inputPostTittle.setValue(title);
-        await this.inputLinkImage.setValue(imageLink);
         await this.inputDescription.setValue(description);
         await this.inputContent.setValue(content);
     }

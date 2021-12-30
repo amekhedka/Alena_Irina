@@ -7,16 +7,23 @@ describe('My Post', () => {
 
     before(async () => {
         await browser.maximizeWindow();
-    })
-    it.only('Add post', async () => {
         await LoginPage.fillLoginCredentials('Manya111@test.com', 'Manya111@');
         await LoginPage.btnLogIn.click();
-        await PublicationsPage.btnAddPost.click();
-        await PublivationsCreationPage.open();
-        await PublivationsCreationPage.fillPost('Maine',"https://media.istockphoto.com/photos/portland-maine-usa-downtown-skyline-picture-id1139100726", "hi", 'test');
-        await PublivationsCreationPage.btnSavePost.click()
-     });
+    })
+    it.only('Add post', async () => {
+        for (let i = 1; i <= 3; i++) {
+            await PublicationsPage.btnAddPost.click();
+            await PublivationsCreationPage.inputPostTittle.setValue(`Maine!!!! ${i}`);
+            await PublivationsCreationPage.inputDescription.setValue(`New Position ${i}`);
+            await PublivationsCreationPage.inputContent.setValue(`Minimum qualifications ${i}`);
+            await PublivationsCreationPage.btnSavePost.click();
+            let tempTitle = await $("div.pb-4>div:nth-child(2)>div>a>div");
+            let tempTitle1 = await tempTitle.getText();
+            //console.log(tempTitle1, "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+            await expect(tempTitle1).toEqual(`Maine!!!! ${i}`);
+        }
 
+    });
     // it("The placeholder Title contains the correct text", async () => {
     //     await PublicationsPage.btnAddPost.click();
     //     expect(PublicationsPage.titlePlaceholder).toHaveTitle("Title");
