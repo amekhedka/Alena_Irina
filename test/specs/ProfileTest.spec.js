@@ -2,8 +2,7 @@
 const LoginPage = require('../pageobjects/Login.page');
 const ProfilePage = require('../pageobjects/Profile.page');
 const GlobalNavigation = require("../pageobjects/GlobalNavigation.page");
-const { getInitials, clearInput } = require("../../helpers/methods");
-const ProfileEditPage = require("../pageobjects/ProfileEdit.page");
+const { getInitials } = require("../../helpers/methods");
 const LoginData = require('../data/login.data');
 
 describe("Profile", () => {

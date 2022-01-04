@@ -87,7 +87,9 @@ class ProfileEditPage extends Page {
         await this.inputImageLink.setValue(imageLink);
         await this.inputAbout.setValue(about);
         await this.langDropdownField.click();
+    }
 
+    async selectLanguage() {
         do {                                                           // if we don`t know the quantity of languages
             await this.langOption.click();
             await this.langDropdownField.click();

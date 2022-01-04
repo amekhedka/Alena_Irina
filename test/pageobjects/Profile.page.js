@@ -11,7 +11,7 @@ class ProfilePage extends Page {
     }
 
     get editBtn () {
-        return $("div[class='ant-row justify-content-between mb-3'] button[type='button']");
+        return $("//button[contains(text(), 'Edit')]");
     }
 
     get profileImageInitials () {
