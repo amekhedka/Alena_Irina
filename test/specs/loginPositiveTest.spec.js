@@ -10,12 +10,12 @@ describe('Login functionality', () => {
         browser.maximizeWindow();
     });
 //Todo: finished
-    // it('should login with valid credentials', async () => {
-    //     await LoginPage.fillLoginCredentials('Manya111@test.com', 'Manya111@');
-    //     await LoginPage.btnLogIn.click();
-    //     //await expect(LoginPage.btnLogIn).toBeEnabled().false;      // проходит false  - не рабочая проверказадать вопрос
-    //     await expect(PublicationsPage.publicationsTitle).toHaveText('publications');
-    // });
+//     it('should login with valid credentials', async () => {
+//         await LoginPage.fillLoginCredentials('Manya111@test.com', 'Manya111@');
+//         await LoginPage.btnLogIn.click();
+//         //await expect(LoginPage.btnLogIn).toBeEnabled().false;      // проходит false  - не рабочая проверказадать вопрос
+//         await expect(PublicationsPage.publicationsTitle).toHaveText('publications');
+//     });
     //Todo: done
     // it("The placeholder email contains the correct text", async () => {
     //     await MenuPage.btnMenu.click();

@@ -31,3 +31,4 @@ class ProfilePage extends Page {
     }
 }
 module.exports = new ProfilePage();
+
