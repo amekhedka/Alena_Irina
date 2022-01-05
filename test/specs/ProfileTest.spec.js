@@ -1,9 +1,9 @@
-//const chai = require("chai");
 const LoginPage = require('../pageobjects/Login.page');
 const ProfilePage = require('../pageobjects/Profile.page');
 const GlobalNavigation = require("../pageobjects/GlobalNavigation.page");
 const { getInitials } = require("../../helpers/methods");
 const LoginData = require('../data/login.data');
+const PublicationsPage = require('../pageobjects/Publications.page');
 
 describe("Profile", () => {
 
@@ -25,5 +25,15 @@ describe("Profile", () => {
         const nameInit = getInitials(fullName);
         const imageInit = ProfilePage.profileImageInitials.getText();
         await expect(nameInit).toEqual(imageInit);
+    });
+
+    it('Button back should redirect on Publication Page ', async () => {
+        await ProfilePage.btnBack.click();
+        await browser.pause(2000);
+        const addPublication = PublicationsPage.btnAddPost;
+        console.log("+++++++++++++++++++++++++++++++++++++++++");
+        console.log(addPublication);
+        console.log("+++++++++++++++++++++++++++++++++++++++++");
+        await expect(addPublication).toHaveText('ADD PUBLICATION');
     });
 });

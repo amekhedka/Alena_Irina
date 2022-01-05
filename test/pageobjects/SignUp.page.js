@@ -15,7 +15,11 @@ class SignUpPage extends Page {
     }
 
     get loginLink() {
-        return $("a[href='/fillLoginCredentials']")
+        return $("a[href='/fillLoginCredentials']");
+    }
+
+    get alert() {
+        return $(".MuiAlert-message.css-1w0ym84");
     }
 
     async signUp (email, password) {
@@ -23,12 +27,10 @@ class SignUpPage extends Page {
         await this.inputPassword.setValue(password);
     }
 
-    clickSignUpBtn () {
-        this.btnSignUp.click();
-    }
-
-    clickLoginLink () {
-        this.loginLink.click();
+    async fillSignUpCredentials (email, password) {
+        await this.open();
+        await this.inputEmail.setValue(email);
+        await this.inputPassword.setValue(password);
     }
 
     open () {
