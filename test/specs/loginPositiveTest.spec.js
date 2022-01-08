@@ -16,29 +16,29 @@ describe('Login functionality', () => {
 //         //await expect(LoginPage.btnLogIn).toBeEnabled().false;      // проходит false  - не рабочая проверказадать вопрос
 //         await expect(PublicationsPage.publicationsTitle).toHaveText('publications');
 //     });
-    //Todo: done
-    // it("The placeholder email contains the correct text", async () => {
-    //     await MenuPage.btnMenu.click();
-    //     await MenuPage.logOutOption.click();
-    //     await LoginPage.open();
-    //     await expect(LoginPage.emailPlaceholder).toHaveText("Email *");
-    // });
+
+    it("The placeholder email contains the correct text", async () => {
+        await MenuPage.btnMenu.click();
+        await MenuPage.logOutOption.click();
+        await LoginPage.open();
+        await expect(LoginPage.emailPlaceholder).toHaveText("Email *");
+    });
 
 
-    //Todo: done
-    // it("The placeholder password contains the correct text", async () => {
-    //     await LoginPage.open();
-    //     await expect(LoginPage.loginTitle).toHaveText("Login");
-    //     await expect(LoginPage.PW_Placeholder).toHaveText("Password *");
-    // });
+    it("The placeholder password contains the correct text", async () => {
+        await LoginPage.open();
+        await expect(LoginPage.loginTitle).toHaveText("Login");
+        await expect(LoginPage.PW_Placeholder).toHaveText("Password *");
+    });
 
-    //Todo: done
-    // it("The placeholder for restore/signup contains the correct text", async () => {
-    //     await LoginPage.open();
-    //     await expect(LoginPage.restorePW_Placeholder).toHaveTextContaining("Forgot password?");
-    //     await expect(LoginPage.signUpPlaceholder).toHaveTextContaining("Don't have an account?");
-    // });
-    //
+    it("The placeholder for restore/signup contains the correct text", async () => {
+        await LoginPage.open();
+        await expect(LoginPage.restorePW_Placeholder).toHaveTextContaining("Forgot password?");
+        await expect(LoginPage.signUpPlaceholder).toHaveTextContaining("Don't have an account?");
+    });
+
+
+
     // TODO: finished
     // it("Check clickable link on the login page", async () => {
     //     await LoginPage.open();
@@ -53,5 +53,6 @@ describe('Login functionality', () => {
     //     await expect(LoginPage.loginTitle).toHaveText('Login');
     //     //await expect(LoginPage.inputEmail).not.toHaveText().true;
     // });
+
 });
 

@@ -4,6 +4,7 @@ const GlobalNavigation = require("../pageobjects/GlobalNavigation.page");
 const { getInitials } = require("../../helpers/methods");
 const LoginData = require('../data/login.data');
 const PublicationsPage = require('../pageobjects/Publications.page');
+const GlobalNavigationPage = require("../pageobjects/GlobalNavigation.page");
 
 describe("Profile", () => {
 
@@ -35,5 +36,10 @@ describe("Profile", () => {
         console.log(addPublication);
         console.log("+++++++++++++++++++++++++++++++++++++++++");
         await expect(addPublication).toHaveText('ADD PUBLICATION');
+    });
+
+    it("Verify the user login under correct email", async () => {
+        await expect(ProfilePage.checkEmail).toHaveTextContaining("manya111@test.com");
+
     });
 });

@@ -26,6 +26,10 @@ class ProfilePage extends Page {
         return $(".ant-col.p-3");
     }
 
+    get checkEmail () {
+        return $("//div[20]");
+    }
+
     open() {
         return super.open('/profile');
     }

@@ -19,13 +19,8 @@ describe('My Post', () => {
             await PublivationsCreationPage.btnSavePost.click();
             let tempTitle = await $("div.pb-4>div:nth-child(2)>div>a>div");
             let tempTitle1 = await tempTitle.getText();
-            //console.log(tempTitle1, "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
             await expect(tempTitle1).toEqual(`Maine!!!! ${i}`);
         }
 
     });
-    // it("The placeholder Title contains the correct text", async () => {
-    //     await PublicationsPage.btnAddPost.click();
-    //     expect(PublicationsPage.titlePlaceholder).toHaveTitle("Title");
-    // });
 });
