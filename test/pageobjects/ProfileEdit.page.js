@@ -1,5 +1,6 @@
 const Page = require('./Page');
 const {clearInput} = require("../../helpers/methods");
+//const langListBox = "//ul[@id='languages-listbox']";
 
 class ProfileEditPage extends Page {
 
@@ -32,11 +33,15 @@ class ProfileEditPage extends Page {
     }
 
     get langDropdownBtn() {
-        return $("//button[@title='Open']");
+        return $("//button[@aria-label='Open']");
     }
 
     get langDropdownField() {
         return $("#languages");
+    }
+
+    get langListBox() {
+        return $("//ul[@id='languages-listbox']")
     }
 
     get langOption() {
@@ -86,7 +91,6 @@ class ProfileEditPage extends Page {
         await this.inputJobTitle.setValue(jobTitle);
         await this.inputImageLink.setValue(imageLink);
         await this.inputAbout.setValue(about);
-        await this.langDropdownField.click();
     }
 
     async selectLanguage() {
@@ -96,8 +100,6 @@ class ProfileEditPage extends Page {
         }
         while (await this.langOption.isClickable());
         await this.langDropdownField.click();
-
-
 
         // for (let i = 0; i <= 17; i++) {                             // if we know the quantity of languages
         //     await this.langDropdownField.click();
