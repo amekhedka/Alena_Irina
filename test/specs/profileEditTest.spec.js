@@ -3,10 +3,8 @@ const ProfilePage = require('../pageobjects/Profile.page');
 const GlobalNavigation = require("../pageobjects/GlobalNavigation.page");
 const ProfileEditPage = require("../pageobjects/ProfileEdit.page");
 const LoginData = require('../data/login.data');
-const langFromDropdown = "//ul[@id='languages-listbox']/li";
-const selectedLangs = "//span[@class='MuiChip-label MuiChip-labelSmall css-1pjtbja']";
 
-describe("Profile", () => {
+describe("Profile", async () => {
 
     before(async () => {
         await browser.maximizeWindow();
@@ -19,48 +17,36 @@ describe("Profile", () => {
         expect(aboutLabel).toEqual("About");
     });
 
-    // it("Count and compare Languages in Dropdown and Selected Languages", async () => {
-    //     await ProfileEditPage.langDropdownField.click();
-    //     await ProfileEditPage.cleanLang.click();
-    //     const res1 = await browser.findElements("xpath", langFromDropdown);
-    //     const numOfRes1 = res1.length;
-    //     await ProfileEditPage.selectLanguage();
-    //     const res2 = await browser.findElements("xpath", selectedLangs);
-    //     const numOfRes2 = res2.length;
-    //     console.log("+++++++++++++++++++++++++++++++++++");
-    //     console.log(numOfRes1)
-    //     console.log("+++++++++++++++++++++++++++++++++++");
-    //     console.log(numOfRes2)
-    //     console.log("+++++++++++++++++++++++++++++++++++");
-    //     await expect(numOfRes1 === numOfRes2).toEqual(true);
-    // });
-
     it("Should be able to clean the form", async () => {
         await ProfileEditPage.cleanForm();
         await ProfileEditPage.expectClearForm();
     });
 
     it("Should be able to count languages in the dropdown", async () => {
-        const res1 = await browser.findElements("xpath", langFromDropdown);
-        const numOfRes1 = res1.length;
-        console.log("+++++++++++++++++++++++++++++++++++");
-        console.log(numOfRes1)
-        console.log("+++++++++++++++++++++++++++++++++++");
-        await expect(numOfRes1).toEqual(18);
+        await ProfileEditPage.countLangInDropdown();
+        await expect(await ProfileEditPage.countLangInDropdown() === 18);
+
     });
 
     it("Should be able to count selected languages in the languages field", async () => {
         await ProfileEditPage.selectLanguage();
-        const res2 = await browser.findElements("xpath", selectedLangs);
-        const numOfRes2 = res2.length;
-        console.log("+++++++++++++++++++++++++++++++++++");
-        console.log(numOfRes2)
-        console.log("+++++++++++++++++++++++++++++++++++");
-        await expect(numOfRes2).toEqual(18);
+        await ProfileEditPage.countSelectedLang();
+        await expect(await ProfileEditPage.countSelectedLang() === 18);
     });
 
-    it("Should ompare Languages in Dropdown and Selected Languages", async () => {
-        await expect(numOfRes1 === numOfRes2).toEqual(true);
+    it("Should compare Languages in Dropdown and Selected Languages", async () => {
+        await ProfileEditPage.countLangInDropdown();
+        await ProfileEditPage.countSelectedLang();
+        await expect(ProfileEditPage.countLangInDropdown()).toEqual(ProfileEditPage.countSelectedLang());
+
+        console.log("+++++++++++++++++++++++++++++++++++");
+        console.log(await ProfileEditPage.countLangInDropdown());
+        console.log("+++++++++++++++++++++++++++++++++++");
+
+        console.log("+++++++++++++++++++++++++++++++++++");
+        console.log(await ProfileEditPage.countSelectedLang());
+        console.log("+++++++++++++++++++++++++++++++++++");
+
     });
 
     it("Should be able to fill the form", async () => {
