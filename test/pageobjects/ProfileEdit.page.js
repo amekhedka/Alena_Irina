@@ -32,11 +32,15 @@ class ProfileEditPage extends Page {
     }
 
     get langDropdownBtn() {
-        return $("//button[@title='Open']");
+        return $("//button[@aria-label='Open']");
     }
 
     get langDropdownField() {
         return $("#languages");
+    }
+
+    get langListBox() {
+        return $("//ul[@id='languages-listbox']")
     }
 
     get langOption() {
@@ -86,7 +90,6 @@ class ProfileEditPage extends Page {
         await this.inputJobTitle.setValue(jobTitle);
         await this.inputImageLink.setValue(imageLink);
         await this.inputAbout.setValue(about);
-        await this.langDropdownField.click();
     }
 
     async selectLanguage() {
@@ -97,12 +100,22 @@ class ProfileEditPage extends Page {
         while (await this.langOption.isClickable());
         await this.langDropdownField.click();
 
-
-
         // for (let i = 0; i <= 17; i++) {                             // if we know the quantity of languages
         //     await this.langDropdownField.click();
         //     await this.langOption.click();
         // }
+    }
+
+    async countLangInDropdown () {
+        const langFromDropdown = "//ul[@id='languages-listbox']/li";
+        const res1 = await browser.findElements("xpath", langFromDropdown);
+        return res1.length;
+     }
+
+    async countSelectedLang () {
+        const selectedLangs = "//span[@class='MuiChip-label MuiChip-labelSmall css-1pjtbja']";
+        const res2 = await browser.findElements("xpath", selectedLangs);
+        return res2.length;
     }
 
     open() {
