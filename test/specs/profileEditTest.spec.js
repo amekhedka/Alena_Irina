@@ -3,6 +3,9 @@ const ProfilePage = require('../pageobjects/Profile.page');
 const GlobalNavigation = require("../pageobjects/GlobalNavigation.page");
 const ProfileEditPage = require("../pageobjects/ProfileEdit.page");
 const LoginData = require('../data/login.data');
+const { countElements } = require("../../helpers/methods");
+const langFromDropdown = "//ul[@id='languages-listbox']/li";
+const selectedLangs = "//span[@class='MuiChip-label MuiChip-labelSmall css-1pjtbja']";
 
 describe("Profile", async () => {
 
@@ -23,30 +26,20 @@ describe("Profile", async () => {
     });
 
     it("Should be able to count languages in the dropdown", async () => {
-        await ProfileEditPage.countLangInDropdown();
-        await expect(await ProfileEditPage.countLangInDropdown() === 18);
-
+        await countElements(langFromDropdown);
+        await expect(await countElements(langFromDropdown) === 18);
+        console.log(await countElements(langFromDropdown));
     });
 
     it("Should be able to count selected languages in the languages field", async () => {
         await ProfileEditPage.selectLanguage();
-        await ProfileEditPage.countSelectedLang();
-        await expect(await ProfileEditPage.countSelectedLang() === 18);
+        await countElements(selectedLangs);
+        await expect(await countElements(selectedLangs) === 18);
+        console.log(await countElements(selectedLangs));
     });
 
     it("Should compare Languages in Dropdown and Selected Languages", async () => {
-        await ProfileEditPage.countLangInDropdown();
-        await ProfileEditPage.countSelectedLang();
-        await expect(ProfileEditPage.countLangInDropdown()).toEqual(ProfileEditPage.countSelectedLang());
-
-        console.log("+++++++++++++++++++++++++++++++++++");
-        console.log(await ProfileEditPage.countLangInDropdown());
-        console.log("+++++++++++++++++++++++++++++++++++");
-
-        console.log("+++++++++++++++++++++++++++++++++++");
-        console.log(await ProfileEditPage.countSelectedLang());
-        console.log("+++++++++++++++++++++++++++++++++++");
-
+        await expect(countElements(langFromDropdown)).toEqual(countElements(selectedLangs));
     });
 
     it("Should be able to fill the form", async () => {
