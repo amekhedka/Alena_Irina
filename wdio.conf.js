@@ -1,4 +1,4 @@
-const url = "https://enduring.herokuapp.com";
+const url = "https://enduring.netlify.app/";
 
 exports.config = {
     //
@@ -23,11 +23,11 @@ exports.config = {
     // will be called from there.
     //
     specs: [
-        './test/specs/**/*.js'
+        './test/specs/**/*.js'    //Указываем какие файлы ранать
     ],
     // Patterns to exclude.
     exclude: [
-        // 'path/to/excluded/files'
+        // 'path/to/excluded/files'    ////Указываем какие файлы НЕ РАНАТЬ
     ],
     //
     // ============
