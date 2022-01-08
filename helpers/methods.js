@@ -25,5 +25,10 @@ async function areEmptyFields (email, password) {
     return arr2.length === 0 ? "All inputs are empty" : arr2;
 }
 
-module.exports = { clearInput, getInitials, areEmptyFields };         // curly braces because we can add some other methods in the arr
+async function countElements (elem) {
+    const res = await browser.findElements("xpath", `${elem}`);
+    return res.length;
+}
+
+module.exports = { clearInput, getInitials, areEmptyFields, countElements };         // curly braces because we can add some other methods in the arr
 

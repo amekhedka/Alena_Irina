@@ -1,5 +1,5 @@
 const Page = require('./Page');
-const {clearInput} = require("../../helpers/methods");
+const {clearInput, countElements} = require("../../helpers/methods");
 
 class ProfileEditPage extends Page {
 
@@ -104,18 +104,6 @@ class ProfileEditPage extends Page {
         //     await this.langDropdownField.click();
         //     await this.langOption.click();
         // }
-    }
-
-    async countLangInDropdown () {
-        const langFromDropdown = "//ul[@id='languages-listbox']/li";
-        const res1 = await browser.findElements("xpath", langFromDropdown);
-        return res1.length;
-     }
-
-    async countSelectedLang () {
-        const selectedLangs = "//span[@class='MuiChip-label MuiChip-labelSmall css-1pjtbja']";
-        const res2 = await browser.findElements("xpath", selectedLangs);
-        return res2.length;
     }
 
     open() {
