@@ -14,8 +14,12 @@ class ProfilePage extends Page {
         return $("//button[contains(text(), 'Edit')]");
     }
 
+    get imagePlaceHolder () {
+        return $("//div[@class='d-flex']");
+    }
+
     get profileImageInitials () {
-        return $("//div[@class='profile-image initials']");
+        return $("//div[@class='user-image initials']");
     }
 
     get profileName() {

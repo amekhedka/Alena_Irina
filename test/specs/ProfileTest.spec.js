@@ -22,24 +22,30 @@ describe("Profile", () => {
     });
 
     it("ImageLetter should match FullName", async () => {
-        const fullName = ProfilePage.profileName.getText();
+        const fullName = ProfilePage.profileName.getValue();
         const nameInit = getInitials(fullName);
-        const imageInit = ProfilePage.profileImageInitials.getText();
+        await browser.pause(500);
+        const imageInit = ProfilePage.profileImageInitials.getValue();
+        await browser.pause(500);
         await expect(nameInit).toEqual(imageInit);
-    });
-
-    it('Button back should redirect on Publication Page ', async () => {
-        await ProfilePage.btnBack.click();
-        await browser.pause(2000);
-        const addPublication = PublicationsPage.btnAddPost;
         console.log("+++++++++++++++++++++++++++++++++++++++++");
-        console.log(addPublication);
+        console.log(nameInit);
+        console.log(imageInit);
         console.log("+++++++++++++++++++++++++++++++++++++++++");
-        await expect(addPublication).toHaveText('ADD PUBLICATION');
     });
 
-    it("Verify the user login under correct email", async () => {
-        await expect(ProfilePage.checkEmail).toHaveTextContaining("manya111@test.com");
-
-    });
+    // it('Button back should redirect on Publication Page ', async () => {
+    //     await ProfilePage.btnBack.click();
+    //     await browser.pause(2000);
+    //     const addPublication = PublicationsPage.btnAddPost;
+    //     console.log("+++++++++++++++++++++++++++++++++++++++++");
+    //     console.log(addPublication.getText());
+    //     console.log("+++++++++++++++++++++++++++++++++++++++++");
+    //     await expect(addPublication).toHaveText('ADD PUBLICATION');
+    // });
+    //
+    // it("Verify the user login under correct email", async () => {
+    //     await expect(ProfilePage.checkEmail).toHaveTextContaining("manya111@test.com");
+    //
+    // });
 });
