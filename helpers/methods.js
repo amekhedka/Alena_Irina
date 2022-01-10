@@ -25,15 +25,15 @@ async function areEmptyFields (email, password) {
     return arr2.length === 0 ? "All inputs are empty" : arr2;
 }
 
-// async function getElements (elem) {
-//     const res = await browser.findElements("xpath", `${elem}`);
-//     return res.length;
-// }
-
 async function getElements (elem) {
     const res = await browser.findElements("xpath", `${elem}`);
     return res;
 }
 
-module.exports = { clearInput, getInitials, areEmptyFields, getElements: getElements };         // curly braces because we can add some other methods in the arr
+async function sortElements (elem) {
+    const res = await browser.findElements("xpath", `${elem}`);
+    return res.sort();
+}
+
+module.exports = { clearInput, getInitials, areEmptyFields, getElements: getElements, sortElements };         // curly braces because we can add some other methods in the arr
 
