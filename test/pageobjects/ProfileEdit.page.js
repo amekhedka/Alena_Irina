@@ -1,5 +1,5 @@
 const Page = require('./Page');
-const {clearInput, countElements} = require("../../helpers/methods");
+const {clearInput, getElements} = require("../../helpers/methods");
 
 class ProfileEditPage extends Page {
 
