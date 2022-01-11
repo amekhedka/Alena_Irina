@@ -26,10 +26,6 @@ class LoginPage extends Page {
         return $("button[type='submit']");
     }
 
-    get loginTitle() {
-        return $("//h3[text()='Login']");
-    }
-
     get PW_message() {
         return $("//div[text()='Incorrect password']")
     }
