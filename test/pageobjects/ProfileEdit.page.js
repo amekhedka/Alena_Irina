@@ -39,9 +39,14 @@ class ProfileEditPage extends Page {
         return $("#languages");
     }
 
-    get langListBox() {
+    get listOfElemFromDropdown() {
         return $("//ul[@id='languages-listbox']")
     }
+
+    get selectedLangs() {
+        return $("//span[@class='MuiChip-label MuiChip-labelSmall css-1pjtbja']")
+    }
+
 
     get langOption() {
         return $("//li[@id='languages-option-0']");
