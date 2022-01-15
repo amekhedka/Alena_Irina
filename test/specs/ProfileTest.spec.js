@@ -34,18 +34,18 @@ describe("Profile", () => {
         console.log("+++++++++++++++++++++++++++++++++++++++++");
     });
 
-    // it('Button back should redirect on Publication Page ', async () => {
-    //     await ProfilePage.btnBack.click();
-    //     await browser.pause(2000);
-    //     const addPublication = PublicationsPage.btnAddPost;
-    //     console.log("+++++++++++++++++++++++++++++++++++++++++");
-    //     console.log(addPublication.getText());
-    //     console.log("+++++++++++++++++++++++++++++++++++++++++");
-    //     await expect(addPublication).toHaveText('ADD PUBLICATION');
-    // });
-    //
-    // it("Verify the user login under correct email", async () => {
-    //     await expect(ProfilePage.checkEmail).toHaveTextContaining("manya111@test.com");
-    //
-    // });
+    it('Button back should redirect on Publication Page ', async () => {
+        await ProfilePage.btnBack.click();
+        await browser.pause(2000);
+        const addPublication = PublicationsPage.btnAddPost;
+        console.log("+++++++++++++++++++++++++++++++++++++++++");
+        console.log(addPublication.getText());
+        console.log("+++++++++++++++++++++++++++++++++++++++++");
+        await expect(addPublication).toHaveText('ADD PUBLICATION');
+    });
+
+    it("Verify the user login under correct email", async () => {
+        await expect(ProfilePage.checkEmail).toHaveTextContaining(LoginData.userCredentials.email);
+
+    });
 });

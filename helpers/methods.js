@@ -29,17 +29,5 @@ async function getElements (elem) {
     return await browser.findElements("xpath", `${elem}`);
 }
 
-async function getTextOfElements (elem) {
-    const arr = await browser.findElements("xpath", `${elem}`);
-    for (let i of arr) {
-        i.getText();
-    }
-}
-
-async function sortElements (a, b) {
-    const res = await browser.findElements("xpath", `${elem}`);
-    return res.sort();
-}
-
-module.exports = { clearInput, getInitials, areEmptyFields, getElements: getElements, sortElements, getTextOfElements };         // curly braces because we can add some other methods in the arr
+module.exports = { clearInput, getInitials, areEmptyFields, getElements };         // curly braces because we can add some other methods in the arr
 
