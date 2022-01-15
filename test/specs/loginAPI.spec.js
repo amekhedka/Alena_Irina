@@ -2,7 +2,7 @@ const LoginPage = require('../pageobjects/Login.page');
 const { registerActivationLink, createUser, userLogin } = require('../../helpers/axios.methods');
 
 const faker = require('fake')
-const chai = require('chai')
+//const chai = require('chai')
 describe('API for Login page', () => {
     let result = null;   //создали переиенную пока с значением NULL
 

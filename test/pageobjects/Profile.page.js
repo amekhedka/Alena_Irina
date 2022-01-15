@@ -11,7 +11,7 @@ class ProfilePage extends Page {
     }
 
     get editBtn () {
-        return $("//button[contains(text(), 'Edit')]");
+        return $("//button[contains(text(),'Edit')]");
     }
 
     get imagePlaceHolder () {

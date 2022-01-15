@@ -4,7 +4,7 @@ const GlobalNavigationPage = require('../pageobjects/GlobalNavigation.page');
 const { clearInput, areEmptyFields } = require('../../helpers/methods');
 const errorMessage = "Please fill out this field";
 const pw_errorMessage = "Incorrect password";
-const chai = require("chai");
+//const chai = require("chai");
 const assert = chai.assert;
 //const {createCompany} = require("../../helpers/axios.methods");
 

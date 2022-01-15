@@ -1,6 +1,5 @@
 const Page = require('./Page');
 const { clearInput } = require("../../helpers/methods");
-
 class ProfileEditPage extends Page {
 
     get inputFirstName() {
@@ -53,7 +52,7 @@ class ProfileEditPage extends Page {
     }
 
     get cleanLang() {
-        return $("(//button[@title='Clear'])[1]")
+        return $("//button[@title='Clear']")
     }
 
     get btnSave() {
