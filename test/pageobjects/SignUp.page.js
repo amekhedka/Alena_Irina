@@ -9,6 +9,7 @@ class SignUpPage extends Page {
     get inputEmail() {
         return $("#email");
     }
+
     get emailValidationError() {
         return $("#email-helper-text");
     }
@@ -38,11 +39,12 @@ class SignUpPage extends Page {
         await this.open();
         await this.inputEmail.setValue(email);
         await this.inputPassword.setValue(password);
+        await this.btnSignUp.click();
     }
 
     open () {
-        return super.open('SignUp');
+        // return super.open('SignUp');
+        return super.open('/SignUp');
     }
 }
 module.exports = new SignUpPage();
-

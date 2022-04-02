@@ -3,39 +3,27 @@ const Page = require('./Page');
 class LoginPage extends Page {
 
     get loginTitle() {
-        return $("//h3[text()='Login']")
+        return $("//h3")
     }
 
     get inputEmail() {
-        return $('#email');
-    }
-
-    get emailPlaceholder() {
-        return $("#email-label");
-    }
-
-    get PW_Placeholder() {
-        return $("#password-label");
+        return $("#email");
     }
 
     get inputPassword() {
-        return $('#password');
+        return $("#password");
     }
 
-    get btnLogIn() {
-        return $("button[type='submit']");
+    get btnLogin() {
+        return $("button[type=\"submit\"]");
     }
 
-    get PW_message() {
-        return $("//div[text()='Incorrect password']")
+    get titleOfInputEmailBox() {
+        return $("//label[@id = 'email-label']" );
     }
 
-    get email_message() {
-        return $("//div[text()='User with provided email does not exist']")
-    }
-
-    get errorMessage() {
-        return $("//div[@class='MuiAlert-message css-1w0ym84']");
+    get titleOfInputPasswordBox() {
+        return $("//label[@id = 'password-label'] ");
     }
 
     get hrefReset() {
@@ -46,22 +34,19 @@ class LoginPage extends Page {
         return $("//a[@href='/signup']");
     }
 
-    get restorePW_Placeholder() {
-        return $("//div[contains(text(), 'Forgot password?')]");
-    }
-    get signUpPlaceholder() {
-        return $('//div[contains(text(), "Don\'t have an account?")]');
+    get errorMessage() {
+        return $("//div[@class='MuiAlert-message css-1w0ym84']");
     }
 
-    async fillLoginCredentials (email, password) {
+    async login(useremail, password) {
         await this.open();
-        await this.inputEmail.setValue(email);
+        await this.inputEmail.setValue(useremail);
         await this.inputPassword.setValue(password);
+        await this.btnLogin.click();
     }
 
     open() {
-        return super.open('/login');
+        return super.open("/login");
     }
 }
 module.exports = new LoginPage();
-

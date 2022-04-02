@@ -1,5 +1,6 @@
 const Page = require('./Page');
-const { clearInput } = require("../../helpers/methods");
+const {clearInput} = require("../../test/helpers/uiMethods");
+
 class ProfileEditPage extends Page {
 
     get inputFirstName() {
@@ -26,41 +27,40 @@ class ProfileEditPage extends Page {
         return $('#about-label');
     }
 
-    get inputLanguages() {
-        return $('#languages');
-    }
-
     get langDropdownBtn() {
-        return $("//button[@aria-label='Open']");
+        return $("//button[@title='Open']");
     }
 
-    get langDropdownField() {
+    get langInputField() {
         return $("#languages");
     }
-
-    get listOfElemFromDropdown() {
-        return $("//ul[@id='languages-listbox']")
-    }
-
-    get selectedLangs() {
-        return $("//span[@class='MuiChip-label MuiChip-labelSmall css-1pjtbja']")
-    }
-
 
     get langOption() {
         return $("//li[@id='languages-option-0']");
     }
 
+    get dropdownLanguages() {
+        return $$("//ul[@id='languages-listbox']/li");
+    }
+
+    get selectedLangs() {
+        return $$("//span[@class='MuiChip-label MuiChip-labelSmall css-1pjtbja']");
+    }
+
     get cleanLang() {
-        return $("//button[@title='Clear']")
+        return $("(//button[@title='Clear'])");
+    }
+
+    get emptyDropdown() {
+        return $("div[class='MuiAutocomplete-noOptions css-t0bixx']");
     }
 
     get btnSave() {
-        return $('button[type="submit"]');
+        return $('//button[@type="submit"]');
     }
 
     get btnCancel() {
-        return $('button[type="type"]');
+        return $("//button[normalize-space()='Cancel']");
     }
 
     async cleanForm() {
@@ -69,23 +69,8 @@ class ProfileEditPage extends Page {
         await clearInput(this.inputJobTitle);
         await clearInput(this.inputImageLink);
         await clearInput(this.inputAbout);
-        await this.langDropdownField.click();
+        await this.langInputField.click();
         await this.cleanLang.click();
-    }
-
-    async expectClearForm() {
-        const firstNameField = await this.inputFirstName.getValue();
-        expect(firstNameField.length).toEqual(0);
-        const lastNameField = await this.inputLastName.getValue();
-        expect(lastNameField.length).toEqual(0);
-        const jobTitleField = await this.inputJobTitle.getValue();
-        expect(jobTitleField.length).toEqual(0);
-        const imageLinkField = await this.inputImageLink.getValue();
-        expect(imageLinkField.length).toEqual(0);
-        const aboutField = await this.inputAbout.getValue();
-        expect(aboutField.length).toEqual(0);
-        const langField = await this.langDropdownField.getValue();
-        expect(langField.length).toEqual(0);
     }
 
     async fillForm(firstName, lastName, jobTitle, imageLink, about) {
@@ -96,18 +81,24 @@ class ProfileEditPage extends Page {
         await this.inputAbout.setValue(about);
     }
 
-    async selectLanguage() {
+    async selectAllLanguages() {
         do {                                                           // if we don`t know the quantity of languages
             await this.langOption.click();
-            await this.langDropdownField.click();
+            await this.langInputField.click();
         }
         while (await this.langOption.isClickable());
-        await this.langDropdownField.click();
+        await this.langInputField.click();
 
         // for (let i = 0; i <= 17; i++) {                             // if we know the quantity of languages
-        //     await this.langDropdownField.click();
+        //     await this.langInputField.click();
         //     await this.langOption.click();
         // }
+    }
+
+    async getLang(list) {
+        const langList = [];
+        await list.map(async (elem) => langList.push(await elem.getText()));
+        return langList;
     }
 
     open() {

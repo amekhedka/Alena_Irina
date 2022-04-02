@@ -1,4 +1,5 @@
 const Page = require('./Page');
+const GlobalNavigationPage = require("../pageobjects/GlobalNavigation.page")
 
 class ProfilePage extends Page {
 
@@ -11,27 +12,27 @@ class ProfilePage extends Page {
     }
 
     get editBtn () {
-        return $("//button[contains(text(),'Edit')]");
-    }
-
-    get imagePlaceHolder () {
-        return $("//div[@class='d-flex']");
+        return $("//button[contains(text(), 'Edit')]");
     }
 
     get profileImageInitials () {
-        return $("//div[@class='user-image initials']");
+        return $("//div[@class='profile-image initials']");
     }
 
     get profileName() {
         return $("//div[@class = 'MuiTypography-root MuiTypography-h4 css-1xvinid']");
     }
-
-    get profileData () {
-        return $(".ant-col.p-3");
+    get aboutInfo() {
+        return $("//p[@class='MuiTypography-root MuiTypography-body1 css-18m8r0v']//div[2]");
     }
 
     get checkEmail () {
-        return $("//div[20]");
+        return $("//div[3]");
+    }
+
+    async getToProfilePage() {
+        await GlobalNavigationPage.clickMenu();
+        await GlobalNavigationPage.clickProfile();
     }
 
     open() {
@@ -39,4 +40,3 @@ class ProfilePage extends Page {
     }
 }
 module.exports = new ProfilePage();
-
