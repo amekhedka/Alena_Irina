@@ -7,7 +7,7 @@ class GlobalNavigationPage extends Page {
     }
 
     get publicationsOption(){
-        return $("#publications");
+        return $("//span[text()='Publications']");
     }
 
     get peopleOption(){
@@ -30,8 +30,36 @@ class GlobalNavigationPage extends Page {
         return $("#logout");
     }
 
+    clickMenu(){
+        this.btnMenu.click();
+    }
+
+    clickPublications(){
+        this.publicationsOption.click();
+    }
+
+    clickPeople(){
+        this.peopleOption.click();
+    }
+
+    clickCompanies(){
+        this.companiesOption.click();
+    }
+
+    clickProblems(){
+        this.problemsOption.click();
+    }
+
+    clickProfile(){
+        this.profileOption.click();
+    }
+
+    clickLogOut(){
+        this.logOutOption.click();
+    }
+
     open () {
-        return super.open('/publications');
+        return super.open('/publication');
     }
 }
 module.exports = new GlobalNavigationPage();
